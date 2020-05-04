@@ -1,0 +1,16 @@
+.playground-container {
+  display: grid;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
+  .playground {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(8, 1fr);
+    // grid-template-rows: 130px 130px 130px;
+    grid-template-rows: 1fr 1fr 1 1fr;
+  }
+}

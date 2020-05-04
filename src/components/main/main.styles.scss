@@ -1,0 +1,74 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .header {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-evenly;
+    background-color: #197d61;
+
+    .header-items {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      position: absolute;
+      // opacity: 0.7;
+
+      &.logo-container {
+        left: 1%;
+        font-size: 40px;
+        .flip-letter {
+          color: #d8126e;
+          -moz-transform: scale(-1, 1);
+          -webkit-transform: scale(-1, 1);
+          -o-transform: scale(-1, 1);
+          -ms-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+          &:hover {
+            color: #2ed5f1;
+            transform: scale(1, 1);
+            -moz-transform: scale(1, 1);
+            -webkit-transform: scale(1, 1);
+            -o-transform: scale(1, 1);
+            -ms-transform: scale(1, 1);
+          }
+        }
+        .rest-of-letters {
+          color: #fff;
+        }
+      }
+
+      &.realtime-game-info {
+        top: 1%;
+        font-size: 30px;
+        // justify-self: center;
+      }
+      &.links {
+        top: 2%;
+        right: 1%;
+        font-size: 20px;
+        // justify-self: flex-end;
+      }
+    }
+  }
+
+  .game-area {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+  }
+
+  // .footer {
+  //   display: flex;
+  //   justify-content: center;
+  //   justify-self: flex-end;
+  //   position: absolute;
+  //   bottom: 0;
+  //   background-color: brown;
+  // }
+}

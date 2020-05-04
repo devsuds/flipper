@@ -1,0 +1,8 @@
+const GameActionTypes = {
+  PREPARE_GAME: "PREPARE_GAME",
+  END_GAME: "END_GAME",
+  UPDATE_SCORE: "UPDATE_SCORE",
+  UPDATE_TIME_REMAINING: "UPDATE_TIME_REMAINING",
+};
+
+export default GameActionTypes;
