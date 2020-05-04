@@ -44,6 +44,10 @@ class Card extends React.Component {
     this.updateGameScore();
   };
 
+  componentWillUnmount = () => {
+    this.updateGameScore();
+  };
+
   render() {
     const { match_found, card_icon, matched_cards } = this.props;
     const is_matched_card =
