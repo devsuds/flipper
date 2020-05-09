@@ -1,48 +1,59 @@
-// const BLACK_N_WHITE_ICONS = {
-//   BLACK_SUN_WITH_RAYS: 9728,
-//   CLOUD: 9729,
-//   UMBRELLA: 9730,
-//   BLACK_STAR: 9733,
-//   BLACK_TELEPHONE: 9742,
-//   YIN_YANG: 9775,
-//   HAMMER_AND_SICKLE: 9773,
-//   LAST_QUARTER_MOON: 9790,
-//   BLACK_SMILING_FACE: 9787,
-//   BLACK_CLUB_SUIT: 9827,
-//   HOT_SPRINGS: 9832,
-//   BEAMED_SIXTEENTH_NOTES: 9836,
-//   EAST_SYRIAC_CROSS: 9841,
-//   BLACK_UNIVERSAL_RECYCLING_SYMBOL: 9851,
-//   BLACK_FLAG: 9873,
-//   BLACK_CHESS_QUEEN: 9819,
-//   BLACK_CHESS_KNIGHT: 9822,
-//   WARNING_SIGN: 9888,
-// };
-
 export const GAME_MODE_CONF = {
   easy: {
     n_cards: 16,
     duration: 60 * 1000,
+    points_per_matched_pair: 10,
+    time_bonus: 5, // per second
+    wining_bonus: 5,
+    min_click_bonus_pro: 25, // per less click than limit
+    min_click_bonus_warrior: 50, // per less click than limit
   },
   medium: {
     n_cards: 24,
     duration: 90 * 1000,
+    points_per_matched_pair: 10,
+    time_bonus: 8, // per second
+    wining_bonus: 10,
+    min_click_bonus_pro: 40, // per less click than limit
+    min_click_bonus_warrior: 80, // per less click than limit
   },
   hard: {
     n_cards: 32,
     duration: 120 * 1000,
+    points_per_matched_pair: 10,
+    time_bonus: 10, // per second
+    wining_bonus: 20,
+    min_click_bonus_pro: 50, // per less click than limit
+    min_click_bonus_warrior: 100, // per less click than limit
   },
+};
+
+const _min_click_bonus_calculator = (mode, n_clicks) => {
+  const {
+    n_cards,
+    min_click_bonus_warrior,
+    min_click_bonus_pro,
+    wining_bonus,
+  } = GAME_MODE_CONF[mode];
+  const warrior_limit = n_cards + n_cards / 4; // A predefined rule
+  const pro_limit = warrior_limit + n_cards / 4; // // A predefined rule
+  return n_clicks <= warrior_limit
+    ? min_click_bonus_warrior +
+        min_click_bonus_warrior * (n_clicks - warrior_limit)
+    : n_clicks <= pro_limit
+    ? min_click_bonus_pro + min_click_bonus_pro * (n_clicks - pro_limit)
+    : wining_bonus;
 };
 
 /*
   This method will double each element and shuffle and return final list of random elements
 */
 export const select_card_icons = (n) => {
-  const array = select_random_elements(n);
-  return shuffle_array([...array, ...array]);
+  const array = _select_random_elements(n);
+  return _shuffle_array([...array, ...array]);
 };
 
-const COLOR_ICONS = {
+const _COLOR_ICONS = {
   UMBRELLA_WITH_RAIN_DROPS: 9748,
   COMET: 9732,
   SHAMROCK: 9752,
@@ -95,11 +106,11 @@ const COLOR_ICONS = {
   // ROCKET: 128640,
 };
 
-const getRandomInt = (max) => {
+const _getRandomInt = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
 };
 
-const shuffle_array = (array) => {
+const _shuffle_array = (array) => {
   let copy = [],
     n = array.length,
     i;
@@ -117,16 +128,62 @@ const shuffle_array = (array) => {
   return copy;
 };
 
-const select_random_elements = (n) => {
+const _select_random_elements = (n) => {
   // Select and make a first shuffle
-  const elements = shuffle_array(Object.values(COLOR_ICONS));
+  const elements = _shuffle_array(Object.values(_COLOR_ICONS));
   // 1. Randomly select starting index => between 0 to a (Logic: a = array_lenth - no_of_elements_to_select+1)
   // Adding 1 on abovelogic since getRandomInt() returns value excluding supplied argument (i.e. max)
-  const start_index = getRandomInt(elements.length - n + 1);
+  const start_index = _getRandomInt(elements.length - n + 1);
   // 2. Select n-th index (Logic: start_index + no_of_elements_to_select -1)
   const end_index = start_index + n - 1;
   return elements.filter((elem) => {
     const index = elements.indexOf(elem);
     return index >= start_index && index <= end_index;
   });
+};
+
+export const getGameScore = (
+  mode,
+  result,
+  no_of_matched_cards,
+  time_saved = 0,
+  n_clicks = 0
+) => {
+  const { time_bonus, points_per_matched_pair } = GAME_MODE_CONF[mode];
+  const time_bonus_points = time_saved < 0 ? 0 : time_saved * time_bonus;
+  const base_score = points_per_matched_pair * no_of_matched_cards;
+  return !result
+    ? base_score
+    : base_score +
+        time_bonus_points +
+        _min_click_bonus_calculator(mode, n_clicks);
+};
+
+export const timeBonusDesc = (mode, time_saved = 0) => {
+  const { time_bonus } = GAME_MODE_CONF[mode];
+  const bonus_points = time_saved < 0 ? 0 : time_saved * time_bonus;
+  return {
+    points: bonus_points,
+    time_saved: time_saved,
+    rate: time_bonus,
+  };
+};
+
+export const clickBonusDesc = (mode, n_clicks, game_result) => {
+  const { wining_bonus } = GAME_MODE_CONF[mode];
+  const bonus_points = _min_click_bonus_calculator(mode, n_clicks);
+  return {
+    points: game_result ? bonus_points : 0, // No bonus point if lost
+    clicks: n_clicks,
+    wining_bonus: game_result ? wining_bonus : 0, // No bonus point if lost
+  };
+};
+
+export const baseScoreDesc = (mode, no_of_matched_cards) => {
+  const { points_per_matched_pair } = GAME_MODE_CONF[mode];
+  const base_score = points_per_matched_pair * no_of_matched_cards;
+  return {
+    points: base_score,
+    matched_cards: no_of_matched_cards,
+  };
 };

@@ -5,19 +5,24 @@ export const prepareNewGame = (payload) => ({
   payload: payload,
 });
 
-export const endGame = (payload) => ({
+export const updateFinalScore = (payload) => ({
+  type: GameActionTypes.UPDATE_FINAL_SCORE,
+  payload: payload,
+});
+
+export const endGame = () => ({
   type: GameActionTypes.END_GAME,
-  payload: payload,
 });
 
-export const updateScore = (payload) => ({
-  type: GameActionTypes.UPDATE_SCORE,
-  payload: payload,
+export const timeUp = () => ({
+  type: GameActionTypes.TIME_UP,
 });
 
-// This will get called if GameTimer component re-renders during game
-// not in use right now
 export const updateTimeRemaining = (payload) => ({
   type: GameActionTypes.UPDATE_TIME_REMAINING,
   payload: payload,
+});
+
+export const updateClickCount = () => ({
+  type: GameActionTypes.UPDATE_CLICK_COUNT,
 });

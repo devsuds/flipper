@@ -3,19 +3,19 @@
     animation: blinkingText 1s infinite;
     @keyframes blinkingText {
       0% {
-        color: #851a1a;
+        color: #c00b0b;
       }
       49% {
-        color: #7e2e2e;
+        color: #bd3434;
       }
       60% {
-        color: #7e2e2e;
+        color: #bd3434;
       }
       99% {
         color: transparent;
       }
       100% {
-        color: #851a1a;
+        color: #c00b0b;
       }
     }
   }

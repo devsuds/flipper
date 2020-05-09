@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import "./main.styles.scss";
 import PlayGround from "../playground/playground.component";
-import Menu from "../menu/menu.component";
+import OtherPages from "../other-pages/other-pages.component";
 import GameTimer from "../game-timer/game-timer.component";
 
 class Main extends React.Component {
@@ -22,7 +22,7 @@ class Main extends React.Component {
           <div className="header-items links"></div>
         </div>
         <div className="game-area">
-          {start_game ? <PlayGround /> : <Menu />}
+          {start_game ? <PlayGround /> : <OtherPages />}
         </div>
       </div>
     );

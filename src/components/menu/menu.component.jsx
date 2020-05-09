@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import "./menu.styles.scss";
 import { prepareNewGame } from "../../redux/game/game.actions";
 import { startOver } from "../../redux/card/card.actions";
+import { showStat, showInfo } from "../../redux/switcher/switcher.actions";
+import { bindActionCreators } from "redux";
 
 class Menu extends React.Component {
   constructor(props) {
@@ -13,8 +15,7 @@ class Menu extends React.Component {
     };
   }
 
-  handleClick = (event) => {
-    event.preventDefault(); // Not required though
+  handleClick = () => {
     //toggle
     this.setState({ clicked: !this.state.clicked });
   };
@@ -26,13 +27,25 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { game_score } = this.props;
+    const { game_score, game_result, showStat, showInfo } = this.props;
     return (
       <div className="menu-container">
-        <div className={`${this.state.clicked ? "clicked " : ""}menu`}>
+        <div className={`${this.state.clicked ? "clicked-play " : ""}menu`}>
           <div className="menu-face front">
+            <span className="info-button">&#9432;</span>
+            <span role="img" className="reaction-emoticon">
+              {game_result === 1 ? "😍🎉🥳🍻" : "😢"}
+            </span>
             <span className="game-score">
               {game_score ? `Score : ${game_score}` : "Click to begin"}
+              <span
+                role="img"
+                className="game-stat-button"
+                onClick={() => showStat(true)}
+              >
+                {" "}
+                📊
+              </span>
             </span>
             <span className="play-retry" onClick={this.handleClick}>
               {`${
@@ -62,13 +75,15 @@ class Menu extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  prepareNewGame: (mode) => dispatch(prepareNewGame(mode)),
-  startOver: () => dispatch(startOver()),
-});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    { prepareNewGame, startOver, showStat, showInfo },
+    dispatch
+  );
 
-const mapStateToProps = ({ game: { game_score } }) => ({
-  game_score: game_score,
+const mapStateToProps = ({ game: { game_score, game_result } }) => ({
+  game_score,
+  game_result,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

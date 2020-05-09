@@ -1,9 +1,10 @@
 import React from "react";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 import "./card.styles.scss";
 import { cardClick } from "../../redux/card/card.actions";
-import { updateScore, endGame } from "../../redux/game/game.actions";
+import { updateClickCount } from "../../redux/game/game.actions";
 
 const CLICK_INTENSITY = 1000;
 
@@ -15,9 +16,10 @@ class Card extends React.Component {
     };
   }
 
-  handleClick = (event) => {
-    event.preventDefault(); // Not required though
-    this.props.cardClick({
+  handleClick = () => {
+    const { updateClickCount, cardClick } = this.props;
+    updateClickCount();
+    cardClick({
       card_value: this.props.card_icon,
       card_id: this.props.card_id,
     });
@@ -25,27 +27,6 @@ class Card extends React.Component {
     setTimeout(() => {
       if (this.state.clicked) this.setState({ clicked: false });
     }, CLICK_INTENSITY);
-  };
-
-  updateGameScore = () => {
-    const { matched_cards, updateScore, card_icons, endGame } = this.props;
-    const current_score = matched_cards.length;
-    updateScore(current_score);
-    // End game when all cards matched
-    if (matched_cards.length === card_icons.length / 2) {
-      // Do not immediate end the game, because that is not polite.
-      setTimeout(() => {
-        endGame(current_score);
-      }, CLICK_INTENSITY);
-    }
-  };
-
-  componentDidUpdate = () => {
-    this.updateGameScore();
-  };
-
-  componentWillUnmount = () => {
-    this.updateGameScore();
   };
 
   render() {
@@ -72,19 +53,12 @@ class Card extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  cardClick: (card_icon) => dispatch(cardClick(card_icon)),
-  updateScore: (score) => dispatch(updateScore(score)),
-  endGame: (score) => dispatch(endGame(score)),
-});
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({ cardClick, updateClickCount }, dispatch);
 
-const mapStateToProps = ({
-  card: { match_found, matched_cards },
-  game: { card_icons },
-}) => ({
+const mapStateToProps = ({ card: { match_found, matched_cards } }) => ({
   match_found: match_found,
   matched_cards: matched_cards,
-  card_icons: card_icons,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card);
