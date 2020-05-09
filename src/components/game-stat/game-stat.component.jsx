@@ -37,7 +37,6 @@ class GameStatistics extends React.Component {
       current: {
         base_score,
         total_score,
-        game_result,
         time_bonus_desc,
         min_click_bonus_desc,
       },
@@ -52,6 +51,7 @@ class GameStatistics extends React.Component {
           <div className="face current-statistics">
             <span
               role="img"
+              aria-label="home"
               className="home-button"
               onClick={() => showStat(false)}
             >

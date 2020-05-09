@@ -33,18 +33,24 @@ class Menu extends React.Component {
         <div className={`${this.state.clicked ? "clicked-play " : ""}menu`}>
           <div className="menu-face front">
             <span className="info-button">&#9432;</span>
-            <span role="img" className="reaction-emoticon">
-              {game_result === 1 ? "😍🎉🥳🍻" : "😢"}
+            <span role="img" aria-label="joy" className="reaction-emoticon">
+              {game_result
+                ? game_result === 1
+                  ? "😍🎉🥳🍻"
+                  : ""
+                : game_result === 0
+                ? "😢"
+                : "👇"}
             </span>
             <span className="game-score">
               {game_score ? `Score : ${game_score}` : "Click to begin"}
               <span
                 role="img"
+                aria-label="bar_chart"
                 className="game-stat-button"
                 onClick={() => showStat(true)}
               >
-                {" "}
-                📊
+                {game_score ? " 📊" : ""}
               </span>
             </span>
             <span className="play-retry" onClick={this.handleClick}>

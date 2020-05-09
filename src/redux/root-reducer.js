@@ -10,7 +10,7 @@ import switcherReducer from "./switcher/switcher.reducer";
 const persistConfig = {
   key: "root-07121987",
   storage,
-  whitelist: ["history", "game"],
+  whitelist: ["history"],
 };
 
 const rootReducer = combineReducers({
