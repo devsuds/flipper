@@ -35,16 +35,39 @@
       backface-visibility: hidden;
 
       &.front {
-        color: #fff;
-        background: repeating-linear-gradient(
-            45deg,
-            #333333 0,
-            #333333 5%,
-            #a72470 0,
-            #a72470 50%
-          )
-          0 / 10px 10px;
-        box-shadow: 5px 5px 5px grey;
+        // color: #fff;
+        // background: repeating-linear-gradient(
+        //     45deg,
+        //     #333333 0,
+        //     #333333 5%,
+        //     #a72470 0,
+        //     #a72470 50%
+        //   )
+        //   0 / 10px 10px;
+        // background: #d53369; /* fallback for old browsers */
+        // background: -webkit-linear-gradient(
+        //   to right,
+        //   #cbad6d,
+        //   #d53369
+        // ); /* Chrome 10-25, Safari 5.1-6 */
+        // background: linear-gradient(
+        //   to right,
+        //   #cbad6d,
+        //   #d53369
+        // ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: #ec008c; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to bottom,
+          #fc6767,
+          #ec008c
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to bottom,
+          #fc6767,
+          #ec008c
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        box-shadow: 5px 5px 5px #b0c0c9;
       }
 
       &.back {

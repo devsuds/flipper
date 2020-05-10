@@ -38,23 +38,23 @@ class Menu extends React.Component {
               aria-label="joy-or-sad"
               className="reaction-emoticon"
             >
-              {game_result
+              {game_result !== null
                 ? game_result === 1
                   ? "😍🎉🥳"
-                  : ""
-                : game_result === 0
-                ? "😞😢😒"
-                : "👇"}
+                  : "😞😢😒"
+                : ""}
             </span>
             <span role="img" aria-label="Pointing Right" className="game-score">
-              {game_score ? `Score : ${game_score} 👉` : "Click to begin"}
+              {game_score !== null
+                ? `Score : ${game_score} 👉`
+                : "Click 👇 to begin"}
               <span
                 role="img"
                 aria-label="bar_chart"
                 className="game-stat-button"
                 onClick={() => showStat(true)}
               >
-                {game_score ? " 📊" : ""}
+                {game_score !== null ? " 📊" : ""}
               </span>
             </span>
             <span className="play-retry" onClick={this.handleClick}>
