@@ -45,7 +45,9 @@ class Card extends React.Component {
         >
           <div className="card-face front" />
           <div className="card-face back">
-            <span>{String.fromCharCode(card_icon)}</span>
+            <span role="img" aria-label="various" className="card-content">
+              {card_icon}
+            </span>
           </div>
         </div>
       </div>

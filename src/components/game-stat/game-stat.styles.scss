@@ -49,19 +49,24 @@
           font-size: 20px;
           cursor: pointer;
         }
-
+        .section-title {
+          display: flex;
+          align-self: center;
+          padding: 2px;
+          font-size: 20px;
+        }
         .score-details {
           display: flex;
           justify-content: center;
           font-size: 14px;
-          color: #e6c8d9;
-          padding: 2px;
+          color: #f0efe5;
+          padding: 4px;
           padding-bottom: 20px;
 
           .table-head {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: bold;
-            color: #e099c2;
+            color: #fff;
           }
           table {
             border-collapse: collapse;
@@ -69,7 +74,7 @@
           }
           td,
           th {
-            border: 1px solid #1a8496;
+            border: 2px solid #bee0e6;
             text-align: center;
           }
         }

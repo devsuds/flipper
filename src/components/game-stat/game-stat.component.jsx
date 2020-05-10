@@ -57,24 +57,24 @@ class GameStatistics extends React.Component {
             >
               🏠
             </span>
+            <div className="section-title">Game summary</div>
             <div className="score-details">
               <table>
-                <thead>
-                  <tr className="table-head">
-                    <th>What</th>
-                    <th>Why</th>
-                    <th>Points</th>
-                  </tr>
-                </thead>
                 <tbody>
                   <tr>
-                    <td>Base Score</td>
-                    <td>{`${base_score.matched_cards} pairs found.`}</td>
+                    <td>Base score</td>
+                    <td>{`${base_score.matched_cards} pair${
+                      base_score.matched_cards > 1 ? "s" : ""
+                    } found.`}</td>
                     <td>{base_score.points}</td>
                   </tr>
                   <tr>
-                    <td>Time Bonus</td>
-                    <td>{`Finished with ${time_bonus_desc.time_saved} seconds remaining (${time_bonus_desc.time_saved}x${time_bonus_desc.rate})`}</td>
+                    <td>Time bonus</td>
+                    <td>{`Finished with ${time_bonus_desc.time_saved} second${
+                      time_bonus_desc.time_saved > 1 ? "s" : ""
+                    } remaining (${time_bonus_desc.time_saved}x${
+                      time_bonus_desc.rate
+                    })`}</td>
                     <td>{time_bonus_desc.points}</td>
                   </tr>
                   <tr>

@@ -1,5 +1,6 @@
 import GameActionTypes from "./game.types";
-import { select_card_icons, getGameScore, GAME_MODE_CONF } from "../../logic";
+import { select_card_icons, getGameScore } from "../../logic";
+import GAME_MODE_CONF from "../../conf-and-data/game-conf";
 
 const INITIAL_STATE = {
   game_mode: null,

@@ -1,9 +1,10 @@
 .card-container {
+  display: flex;
+  flex-direction: column;
   width: 100px;
   height: 120px;
   border-radius: 10px;
   perspective: 600px;
-  display: flex;
   top: 1%;
   left: 1%;
   transform: translate(-1%, -1%);
@@ -49,11 +50,15 @@
       &.back {
         color: white;
         text-align: center;
-        font-weight: bold;
-        font-size: 70px;
-        line-height: 135px;
+        justify-content: space-around;
         background: #c5c4bc;
+        padding: 10px;
         transform: rotateY(180deg);
+        display: flex;
+
+        .card-content {
+          font-size: 75px;
+        }
       }
     }
   }
