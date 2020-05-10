@@ -23,3 +23,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.custom-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #89adb9;
+  background-color: #f5f5f5;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: #b4e8f1;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #0787ad;
+  border: 2px solid #317c8a;
+}

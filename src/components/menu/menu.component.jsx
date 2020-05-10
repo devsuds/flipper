@@ -32,7 +32,9 @@ class Menu extends React.Component {
       <div className="menu-container">
         <div className={`${this.state.clicked ? "clicked-play " : ""}menu`}>
           <div className="menu-face front">
-            <span className="info-button">&#9432;</span>
+            <span className="info-button" onClick={() => showInfo(true)}>
+              &#9432;
+            </span>
             <span
               role="img"
               aria-label="joy-or-sad"
