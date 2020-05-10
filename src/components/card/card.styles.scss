@@ -48,16 +48,17 @@
       }
 
       &.back {
+        display: flex;
+        flex-direction: column;
         color: white;
-        text-align: center;
-        justify-content: space-around;
         background: #c5c4bc;
         padding: 10px;
         transform: rotateY(180deg);
-        display: flex;
 
         .card-content {
-          font-size: 75px;
+          justify-content: center;
+          align-self: center;
+          font-size: 80px;
         }
       }
     }
