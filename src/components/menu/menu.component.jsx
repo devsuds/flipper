@@ -54,7 +54,7 @@ class Menu extends React.Component {
                 className="game-stat-button"
                 onClick={() => showStat(true)}
               >
-                {game_score !== null ? " 📊" : ""}
+                {game_score !== null ? " 📜" : ""}
               </span>
             </span>
             <span className="play-retry" onClick={this.handleClick}>

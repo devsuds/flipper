@@ -12,9 +12,9 @@ const _min_click_bonus_calculator = (mode, n_clicks) => {
   const pro_limit = warrior_limit + n_cards / 4; // // A predefined rule
   return n_clicks <= warrior_limit
     ? min_click_bonus_warrior +
-        min_click_bonus_warrior * (n_clicks - warrior_limit)
+        min_click_bonus_warrior * (warrior_limit - n_clicks)
     : n_clicks <= pro_limit
-    ? min_click_bonus_pro + min_click_bonus_pro * (n_clicks - pro_limit)
+    ? min_click_bonus_pro + min_click_bonus_pro * (pro_limit - n_clicks)
     : wining_bonus;
 };
 
