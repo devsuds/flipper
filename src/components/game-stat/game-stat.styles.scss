@@ -63,18 +63,26 @@
           padding: 4px;
           padding-bottom: 20px;
 
-          .table-head {
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-          }
           table {
             border-collapse: collapse;
             width: 100%;
-          }
-          th {
-            border-top: 1px solid #bdb077;
-            text-align: center;
+            tr {
+              background-color: #1f7b97;
+              text-align: center;
+              td,
+              th {
+                border: 2px solid #5797a7;
+                text-align: center;
+              }
+              &:hover {
+                background-color: #3a8aa5;
+              }
+            }
+            .table-head {
+              font-size: 20px;
+              font-weight: bold;
+              color: #fff;
+            }
           }
         }
       }
