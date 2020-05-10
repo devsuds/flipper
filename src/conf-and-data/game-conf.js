@@ -1,7 +1,7 @@
 const GAME_MODE_CONF = {
   easy: {
     n_cards: 16,
-    duration: 600 * 1000,
+    duration: 60 * 1000,
     points_per_matched_pair: 10,
     time_bonus: 5, // per second
     wining_bonus: 5,
