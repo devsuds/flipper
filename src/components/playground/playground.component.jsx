@@ -59,12 +59,10 @@ class PlayGround extends React.Component {
   render() {
     const { card_icons } = this.props;
     return (
-      <div className="playground-container">
-        <div className="playground">
-          {card_icons.map((icon, index) => (
-            <Card key={index} card_id={index} card_icon={icon} />
-          ))}
-        </div>
+      <div className="playground">
+        {card_icons.map((icon, index) => (
+          <Card key={index} card_id={index} card_icon={icon} />
+        ))}
       </div>
     );
   }
