@@ -1,7 +1,7 @@
 const GAME_MODE_CONF = {
   easy: {
     n_cards: 16,
-    duration: 60 * 1000,
+    duration: 45 * 1000,
     points_per_matched_pair: 10,
     time_bonus: 5, // per second
     wining_bonus: 5,
@@ -10,7 +10,7 @@ const GAME_MODE_CONF = {
   },
   medium: {
     n_cards: 24,
-    duration: 90 * 1000,
+    duration: 60 * 1000,
     points_per_matched_pair: 10,
     time_bonus: 8, // per second
     wining_bonus: 10,
@@ -19,7 +19,7 @@ const GAME_MODE_CONF = {
   },
   hard: {
     n_cards: 32,
-    duration: 120 * 1000,
+    duration: 75 * 1000,
     points_per_matched_pair: 10,
     time_bonus: 10, // per second
     wining_bonus: 20,
