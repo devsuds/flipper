@@ -55,7 +55,7 @@ export const _EMOTICONS_COLLECTION = {
   Avocado: ["em em-avocado", "AVOCADO"],
   Bike: ["em em-bike", "BICYCLE"],
   Fire_Extinguisher: ["em em-fire_extinguisher", "FIRE EXTINGUISHER"],
-  Candle: ["em em- candle", "Candle"],
+  Candle: ["em em-candle", "Candle"],
   Candy: ["em em-candy", "CANDY"],
   Clover: ["em em-four_leaf_clover", "FOUR LEAF CLOVER"],
   Maple: ["em em-maple_leaf", "MAPLE LEAF"],
