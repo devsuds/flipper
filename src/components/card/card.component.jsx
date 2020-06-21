@@ -20,7 +20,7 @@ class Card extends React.Component {
     const { updateClickCount, cardClick } = this.props;
     updateClickCount();
     cardClick({
-      card_value: this.props.card_icon,
+      card_value: this.props.card_icon_details[1],
       card_id: this.props.card_id,
     });
     this.setState({ clicked: true });
@@ -30,7 +30,8 @@ class Card extends React.Component {
   };
 
   render() {
-    const { match_found, card_icon, matched_cards } = this.props;
+    const { match_found, card_icon_details, matched_cards } = this.props;
+    const card_icon = card_icon_details[1];
     const is_matched_card =
       match_found === card_icon || matched_cards.includes(card_icon);
     return (
@@ -45,9 +46,11 @@ class Card extends React.Component {
         >
           <div className="card-face front" />
           <div className="card-face back">
-            <span role="img" aria-label="various" className="card-content">
-              {card_icon}
-            </span>
+            <i
+              className={`${card_icon_details[0]} card-content`}
+              role="presentation"
+              aria-label={card_icon}
+            ></i>
           </div>
         </div>
       </div>

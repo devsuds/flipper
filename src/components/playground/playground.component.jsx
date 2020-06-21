@@ -61,7 +61,7 @@ class PlayGround extends React.Component {
     return (
       <div className="playground">
         {card_icons.map((icon, index) => (
-          <Card key={index} card_id={index} card_icon={icon} />
+          <Card key={index} card_id={index} card_icon_details={icon} />
         ))}
       </div>
     );
